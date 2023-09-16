@@ -1,3 +1,3 @@
 | Task | Status |
 |------|--------|
-| [x] 1 | fdf|
+| - [x] Task 1 | fdf|
