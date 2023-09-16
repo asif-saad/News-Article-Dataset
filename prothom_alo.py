@@ -8,7 +8,21 @@ import os
 # url='https://www.prothomalo.com/world/ivhplp1kyc'
 # url='https://www.prothomalo.com/bangladesh/district/ap9lkez94i'
 # url='https://www.prothomalo.com/world/ivhplp1kyc'
-url='https://www.prothomalo.com/world/europe/s2x8s9k7o0'
+# url='https://www.prothomalo.com/world/europe/s2x8s9k7o0'
+# url = 'https://www.prothomalo.com/world/9qjyawojm1'
+# url='https://www.prothomalo.com/world/south-america/cu0nuux7kq'
+# url='https://www.prothomalo.com/world/south-america/84kunpi4ve'
+
+
+
+# url='https://www.prothomalo.com/politics/qllnpxz7e1'
+
+
+# url='https://www.prothomalo.com/bangladesh/pqz7kbiu6n'
+
+
+url='https://www.prothomalo.com/opinion/column/5hkpvlzaud'
+
 
 
 # Send an HTTP GET request to the URL
