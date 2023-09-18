@@ -21,7 +21,7 @@ import os
 # url='https://www.prothomalo.com/bangladesh/pqz7kbiu6n'
 
 
-url='https://www.prothomalo.com/opinion/column/5hkpvlzaud'
+url='https://www.prothomalo.com/politics/zubwkuof15'
 
 
 
@@ -32,7 +32,7 @@ response = requests.get(url)
 if response.status_code == 200:
     # Parse the HTML content of the page using BeautifulSoup
     soup = BeautifulSoup(response.text, 'html.parser')
-
+    
     # Find and extract the titles of articles
     article_titles = soup.find('h1',class_='IiRps')
 
@@ -47,13 +47,23 @@ if response.status_code == 200:
 
 
 
-    time = soup.find('div', class_='xuoYp')
+    time = soup.find('div', class_='story-content no-key-elements')
     if time:
         # Find the <span> tag within the "xuoYp" <div>
         time = time.find('span')
         # Get the text inside the <span> tag
         time = time.text
 
+
+
+    # side=soup.find('div',class_='gQiX8')
+    # if side:
+    #     print(side)
+    #     links=side.find_all('a')
+    #     for link in links:
+    #         href=link.get('href')
+    #         print(href)
+    
 
 
 
@@ -63,9 +73,7 @@ if response.status_code == 200:
         for title in article_titles:
             file.write(title.text+'\n\n')
 
-
         file.write(time+'\n\n')
-
 
         for tag in p_tags:
             text=tag.get_text()
