@@ -17,6 +17,15 @@
 
 
 
+<h2> Current Situation </h2>
+
+- working on ekattor tv
+- look for other mixed news web portal
+
+
+
+
+
 
 
 
