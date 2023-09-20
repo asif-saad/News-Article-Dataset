@@ -1,26 +1,10 @@
-| Task | Status |
-|---|---|
-| application of all types of category | running </li>|
+<h2> Updates </h2>
+
+- scraping and crawling not working on somoy tv
+- ekattor tv has automated system to block request after some rate of request (450-550).
+- prothom alo does not allow crawling maybe (got to check again)
 
 
-
-
-
-
-
-<h2> Issues </h2>
-
-- time is not matching for prothom alo.
-- crawling is not working for prothom alo?
-
-
-
-
-
-<h2> Current Situation </h2>
-
-- working on ekattor tv
-- look for other mixed news web portal
 
 
 
