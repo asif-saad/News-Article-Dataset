@@ -1,6 +1,4 @@
-p_with_class=soup.find_all('div',class_='type-counter')
-    # for p in p_with_class:
-    #     links=div.find_all('a')
-    #     for link in links:
-    #         href=link.get('href')
-    #         print(href)   
+with open('output.txt', 'a', encoding='utf-8') as file:
+    #     for title in article_titles:
+    #         file.write(title.text+'\n\n')
+    #     file.write('\n\n')

@@ -3,13 +3,15 @@
 
 import requests
 from bs4 import BeautifulSoup
+import time
 
 
 cnt=0
 url='https://ekattor.tv/politics/51429/%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE'
 final=[url]
 while cnt<5000:
-
+    if(cnt%300==0 and cnt>0):
+        time.sleep(60)
     # Send an HTTP GET request to the URL
     response = requests.get(url)
 
@@ -40,6 +42,29 @@ while cnt<5000:
         print('Failed to retrieve the web page. Status code:', response.status_code)
 
     cnt+=1
+    if(cnt+3>len(final)):
+        prev_len=len(final)
+        temp=0
+
+        while temp-prev_len<100 and temp<len(final):
+            url=final[temp]
+            response=requests.get(url)
+            if response.status_code == 200:
+                soup=BeautifulSoup(response.text,'html.parser')
+                links=soup.find_all('a',class_='link_overlay')
+                if links:
+                    for link in links:
+                        href=link.get('href')
+                        # file.write(href+'\n')
+                        href='https:'+href
+                        if(href not in final):
+                            final.append(href)
+            temp+=1
+            print("crawling at: "+str(temp))
+
+
+
     url=final[cnt]
     print(len(final))
+
 

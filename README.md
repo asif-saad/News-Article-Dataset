@@ -6,7 +6,11 @@
 
 - daily star bangla has no problem scrapping and crawling
 
-- 
+- BBC bangla is working fine
+
+- ATN Bangla News is not dynamic, acting as static, no recursive possible.
+
+- Kalerkantha is working good.
 
 
 

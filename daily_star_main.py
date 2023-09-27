@@ -8,7 +8,7 @@ from bs4 import BeautifulSoup
 cnt=0
 url='https://bangla.thedailystar.net/news/asia/india/news-516151'
 final=[url]
-while cnt<1000:
+while cnt<10000:
     # Send an HTTP GET request to the URL
     response = requests.get(url)
 
