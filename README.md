@@ -4,6 +4,10 @@
 - ekattor tv has automated system to block request after some rate of request (450-550).
 - prothom alo does not allow crawling maybe (got to check again)
 
+- daily star bangla has no problem scrapping and crawling
+
+- 
+
 
 
 
