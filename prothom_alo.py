@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-import os
+
 
 # Define the URL of the website you want to scrape
 # url = 'https://www.prothomalo.com/business/xj27ffhs63'
@@ -36,6 +36,12 @@ if response.status_code == 200:
     # Find and extract the titles of articles
     article_titles = soup.find('h1',class_='IiRps')
 
+
+
+    links=soup.find('div',class_='print-related-stories-wrapper EigaV')
+    print(links)
+    if links:
+        print(links)
 
 
 

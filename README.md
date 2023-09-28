@@ -13,6 +13,15 @@
 - Kalerkantha is working good.
 
 
+- DBC news not letting crawl.
+
+
+- Channel24 is not working at all.
+
+
+- better internet connection needed for prothom alo?
+
+
 
 
 
