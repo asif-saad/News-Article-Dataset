@@ -21,6 +21,12 @@
 
 - better internet connection needed for prothom alo?
 
+- ekattor tv is ready for retrieving
+
+- write similar code for ittefaq
+
+- find the last available news indices for ekattor and ittefaq
+
 
 
 
