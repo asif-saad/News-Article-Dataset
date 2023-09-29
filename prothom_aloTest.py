@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 
 
-url='https://ekattor.tv/politics'
+url='https://www.prothomalo.com/bangladesh/capital'
 print(url)
 
 
@@ -19,7 +19,7 @@ if response.status_code == 200:
     a=soup.find_all('a')
     if a:
         for x in a:
-            print(x)
+            print(x.get('href'))
 
 
 else:
