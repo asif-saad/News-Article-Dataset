@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import time
 
 url1='https://ekattor.tv/'
-cnt=10943
+cnt=16687
 
 
 while True:
@@ -23,7 +23,7 @@ while True:
         print('Failed to retrieve the web page. Status code:', response.status_code)
         
     
-    if cnt%1000==0:
+    if cnt%300==0:
         time.sleep(100)
     cnt+=1
     
