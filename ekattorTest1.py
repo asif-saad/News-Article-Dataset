@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import time
 
 url1='https://ekattor.tv/'
-cnt=28222
+cnt=33800
 
 
 while True:

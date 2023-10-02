@@ -1,36 +1,22 @@
-import requests
-from bs4 import BeautifulSoup
+from datasets.dataset_dict import DatasetDict
+from datasets import Dataset
+import jsonlines
+# d = {'train':Dataset.from_dict({'labels':y_train,'review':X_train}),'validation':Dataset.from_dict({'labels':y_test,'review':X_test})}
+# raw_datasets=DatasetDict(d)
+# print(raw_datasets)
+x=[1,0,6,47,3]
+y=[9,8,7,6,5]
+d={'train':Dataset.from_dict({'x_train':x,'y_train':y})}
+raw_datasets=DatasetDict(d)
 
 
 
-url='https://www.prothomalo.com'
 
-
-# Send an HTTP GET request to the URL
-response = requests.get(url)
-
-# Check if the request was successful (status code 200)
-if response.status_code == 200:
-    # Parse the HTML content of the page using BeautifulSoup
-    soup = BeautifulSoup(response.text, 'html.parser')
-    
-    a=soup.find_all('a')
-    if a:
-        for x in a:
-            print(x)
-            print(x.get('href'))
-            print('\n\n')
-
-
-        # for x in a:
-        #     tmp=x.get('href')
-        #     if "https://www.prothomalo.com" in tmp and tmp not in final:
-        #         print(tmp)
-        #         final.append(tmp)
-                
-
-
-else:
-    print('Failed to retrieve the web page. Status code:', response.status_code)
+with jsonlines.open("raw_datasets.jsonl", "a") as writer:
+    for dataset_name, dataset in raw_datasets.items():
+        for example in dataset:
+            writer.write({
+                **example
+            })
 
 
