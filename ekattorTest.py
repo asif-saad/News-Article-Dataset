@@ -9,44 +9,51 @@ response = requests.get(url)
 
 # Check if the request was successful (status code 200)
 if response.status_code == 200:
-    
-    # Parse the HTML content of the page using BeautifulSoup
     soup = BeautifulSoup(response.text, 'html.parser')
-    
+    h1=soup.find('h1',class_='title')
+    category=soup.find('div',class_="breadcrumb")
+    div=soup.find('div',class_='viewport jw_article_body')
+    tag=soup.find('div',class_='topic_list')
+    if h1 and div:
+        h1=h1.text
+        with open('output.txt','a',encoding='utf-8') as file:
+            # category
+            if category:
+                category=category.find('ul')
+                if category:
+                    category=category.find_all('li')
+                    if category:
+                        category=category[1].text
+                        print(category)
 
-    with open('output.txt', 'a', encoding='utf-8') as file:
+            
+            # time
+            time=soup.find('span',class_='tts_time published_time')
+            if time:
+                print(time.get('content'))
+                
 
-        title=soup.find('h1',class_='title')
-        div=soup.find('div',class_='viewport jw_article_body')
-        
-        
-        tag=soup.find('div',class_='topic_list')
-        if tag:
-            strong=tag.find_all('strong')
-            for x in strong:
-                print(x.text)
 
-        if title and div:
 
+            # content
             p=div.find_all('p')
             content=str()
-            for x in p:
-                content+=x.text
-
-
-        
-
+            if p:
+                for x in p:
+                    content+=x.text
+                print(content)
 
 
 
-        category=soup.find('div',class_="breadcrumb")
-        if category:
-            category=category.find('ul')
-            if category:
-                category=category.find_all('li')
-                if category:
-                    category=category[1].text
-                    print(category)
+            if tag:
+                tag=tag.find_all('strong')
+                tags=str()
+                for x in tag:
+                    tags+=x.text
+                    if x!=tag[-1]:
+                        tags+=', '
+                print(tags)
+
 else:
     print('Failed to retrieve the web page. Status code:', response.status_code)
 
