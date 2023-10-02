@@ -2,50 +2,53 @@ import requests
 from bs4 import BeautifulSoup
 
 
-url='https://ekattor.tv/politics/'
-cnt=0
-final=[url]
+url='https://ekattor.tv/33823'
 
+# Send an HTTP GET request to the URL
+response = requests.get(url)
 
-while cnt<8000:
-
-
-    # Send an HTTP GET request to the URL
-    response = requests.get(url)
-
-    # Check if the request was successful (status code 200)
-    if response.status_code == 200:
-        
-        # Parse the HTML content of the page using BeautifulSoup
-        soup = BeautifulSoup(response.text, 'html.parser')
-        
-        a=soup.find_all('a',class_="link_overlay")
-        if a:
-            for x in a:
-                x='https:'+x.get('href')
-                if x not in final:
-                    final.append(x)
-
-        
-
-        with open('output.txt', 'a', encoding='utf-8') as file:
-
-            title=soup.find('h1',class_='title')
-            if title:
-
-                file.write(title.text+'\n\n')
-
-                    
-
-
-    else:
-        print('Failed to retrieve the web page. Status code:', response.status_code)
+# Check if the request was successful (status code 200)
+if response.status_code == 200:
     
-    cnt+=1
-    if cnt<len(final):
-        url=final[cnt]
-    else:
-        break
-    print(cnt,len(final),round(cnt/len(final),3))
+    # Parse the HTML content of the page using BeautifulSoup
+    soup = BeautifulSoup(response.text, 'html.parser')
+    
+
+    with open('output.txt', 'a', encoding='utf-8') as file:
+
+        title=soup.find('h1',class_='title')
+        div=soup.find('div',class_='viewport jw_article_body')
+        
+        
+        tag=soup.find('div',class_='topic_list')
+        if tag:
+            strong=tag.find_all('strong')
+            for x in strong:
+                print(x.text)
+
+        if title and div:
+
+            p=div.find_all('p')
+            content=str()
+            for x in p:
+                content+=x.text
+
+
+        
+
+
+
+
+        category=soup.find('div',class_="breadcrumb")
+        if category:
+            category=category.find('ul')
+            if category:
+                category=category.find_all('li')
+                if category:
+                    category=category[1].text
+                    print(category)
+else:
+    print('Failed to retrieve the web page. Status code:', response.status_code)
+
 
 
