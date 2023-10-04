@@ -18,7 +18,7 @@ raw_datasets=DatasetDict(d)
 
 
 url1='https://ekattor.tv/'
-cnt=27660
+cnt=43851
 
 while True:
     url=url1+str(cnt)+"/"
@@ -33,7 +33,7 @@ while True:
         if h1 and div:
             h1=h1.text
             with open('output.txt','a',encoding='utf-8') as file:
-                with jsonlines.open("raw_datasets.jsonl", "a") as writer:
+                with jsonlines.open("C:/Users/asifs/OneDrive/Desktop/dataset/raw_datasets.jsonl", "a") as writer:
                     titleFinal=str()
                     categoryFinal=str()
                     timeFinal=str()
