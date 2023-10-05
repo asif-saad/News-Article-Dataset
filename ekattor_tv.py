@@ -1,73 +1,113 @@
-#text-left black--text text-h5 text-sm-h4 text-md-h3 mb-0 mb-sm-3
-
-
 import requests
 from bs4 import BeautifulSoup
-import time
+from datasets.dataset_dict import DatasetDict
+from datasets import Dataset
+import jsonlines
+
+titleFinal=str()
+categoryFinal=str()
+timeFinal=str()
+contentFinal=str()
+tagsFinal=str()
+d={'EkattorTv':Dataset.from_dict({'Title':titleFinal,'Category':categoryFinal,'Time':timeFinal,'Content':contentFinal,'Tags':tagsFinal})}
+raw_datasets=DatasetDict(d)
 
 
-cnt=0
-#url='https://ekattor.tv/politics/51429/%E0%A6%B0%E0%A6%BE%E0%A6%B7%E0%A7%8D%E0%A6%9F%E0%A7%8D%E0%A6%B0%E0%A6%AF%E0%A6%A8%E0%A7%8D%E0%A6%A4%E0%A7%8D%E0%A6%B0-%E0%A6%A8%E0%A6%BF%E0%A6%B0%E0%A7%8D%E0%A6%AF%E0%A6%BE%E0%A6%A4%E0%A6%A8%E0%A7%87%E0%A6%B0-%E0%A6%95%E0%A6%BE%E0%A6%B0%E0%A6%96%E0%A6%BE%E0%A6%A8%E0%A6%BE'
-url='https://ekattor.tv/international/51893/%E0%A6%AA%E0%A6%BE%E0%A6%95%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%A4%E0%A6%BE%E0%A6%A8%E0%A7%87-%E0%A6%86%E0%A6%A4%E0%A7%8D%E0%A6%AE%E0%A6%98%E0%A6%BE%E0%A6%A4%E0%A7%80-%E0%A6%AC%E0%A7%8B%E0%A6%AE%E0%A6%BE-%E0%A6%AC%E0%A6%BF%E0%A6%B8%E0%A7%8D%E0%A6%AB%E0%A7%8B%E0%A6%B0%E0%A6%A3-%E0%A6%A8%E0%A6%BF%E0%A6%B9%E0%A6%A4-%E0%A7%AB%E0%A7%A6'
 
-final=[url]
-while cnt<5000:
-    if(cnt%300==0 and cnt>0):
-        time.sleep(60)
-    # Send an HTTP GET request to the URL
+
+
+
+url1='https://ekattor.tv/'
+cnt=52174
+
+while True:
+    url=url1+str(cnt)+"/"
+    print(cnt)
     response = requests.get(url)
-
-    # Check if the request was successful (status code 200)
     if response.status_code == 200:
-        # Parse the HTML content of the page using BeautifulSoup
         soup = BeautifulSoup(response.text, 'html.parser')
-        # Find and extract the titles of articles
-        article_titles = soup.find('h1',class_='title')
-        links=soup.find_all('a',class_='link_overlay')
-        if links:
-            with open('links.txt','a') as file:
-                for link in links:
-                    href=link.get('href')
-                    # file.write(href+'\n')
-                    href='https:'+href
-                    if(href not in final):
-                        final.append(href)
+        h1=soup.find('h1',class_='title')
+        category=soup.find('div',class_="breadcrumb")
+        div=soup.find('div',class_='viewport jw_article_body')
+        tag=soup.find('div',class_='topic_list')
+        if h1 and div:
+            h1=h1.text
+            with open('output.txt','a',encoding='utf-8') as file:
+                with jsonlines.open("C:/Users/asifs/OneDrive/Desktop/dataset/raw_datasets.jsonl", "a") as writer:
+                    titleFinal=str()
+                    categoryFinal=str()
+                    timeFinal=str()
+                    contentFinal=str()
+                    tagsFinal=str()
 
 
-        with open('output.txt', 'a', encoding='utf-8') as file:
-            for title in article_titles:
-                file.write(str(cnt)+"\t"+title.text+'\n\n')
-            file.write('\n\n')
 
+
+                    file.write(str(cnt-1587)+','+cnt+'\n'+h1+'\n')
+                    titleFinal=h1
+                    
+                
+
+                    # category
+                    if category:
+                        category=category.find('ul')
+                        if category:
+                            category=category.find_all('li')
+                            if category:
+                                category=category[1].text
+                                # print(category)
+                                file.write(category+'\n')
+                                categoryFinal=category
+                                
+
+                
+                    # time
+                    time=soup.find('span',class_='tts_time published_time')
+                    if time:
+                        file.write(time.get('content')+'\n')
+                        timeFinal=time.get('content')
+                        
+
+
+
+                    # content
+                    p=div.find_all('p')
+                    content=str()
+                    if p:
+                        for x in p:
+                            content+=x.text
+                        file.write(content+'\n')
+                        contentFinal=content
+                        
+
+
+                    if tag:
+                        tag=tag.find_all('strong')
+                        tags=str()
+                        for x in tag:
+                            tags+=x.text
+                            if x!=tag[-1]:
+                                tags+=', '
+                        file.write('tags:'+tags+'\n\n\n')
+                        tagsFinal=tags
+                    
+
+                    writer.write({'Title':titleFinal,'Category':categoryFinal,'Time':timeFinal,
+                                  'Content':contentFinal,'Tags':tagsFinal})
 
     else:
         print('Failed to retrieve the web page. Status code:', response.status_code)
-
-    cnt+=1
-    if(cnt==len(final)):
-        prev_len=len(final)
-        temp=0
-
-        while temp-prev_len<100 and temp<len(final):
-            url=final[temp]
-            response=requests.get(url)
-            if response.status_code == 200:
-                soup=BeautifulSoup(response.text,'html.parser')
-                links=soup.find_all('a',class_='link_overlay')
-                if links:
-                    for link in links:
-                        href=link.get('href')
-                        # file.write(href+'\n')
-                        href='https:'+href
-                        if(href not in final):
-                            final.append(href)
-            temp+=1
-            print("crawling at: "+str(temp))
-
-
-    if cnt<len(final[cnt]):
-        url=final[cnt]
         
-    print(cnt,len(final))
+    
+    if cnt%300==0:
+        import time
+        time.sleep(50)
+    cnt+=1
+    
+
+
+
+
+
 
 
