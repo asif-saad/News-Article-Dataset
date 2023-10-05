@@ -81,6 +81,7 @@ while True:
                         
 
 
+                    # tags
                     if tag:
                         tag=tag.find_all('strong')
                         tags=str()
