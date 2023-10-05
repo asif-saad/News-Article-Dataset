@@ -18,7 +18,7 @@ raw_datasets=DatasetDict(d)
 
 
 url1='https://ekattor.tv/'
-cnt=49565
+cnt=52174
 
 while True:
     url=url1+str(cnt)+"/"
@@ -43,7 +43,7 @@ while True:
 
 
 
-                    file.write(str(cnt-1587)+'\n'+h1+'\n')
+                    file.write(str(cnt-1587)+','+cnt+'\n'+h1+'\n')
                     titleFinal=h1
                     
                 
