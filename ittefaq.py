@@ -13,7 +13,8 @@ d={'EkattorTv':Dataset.from_dict({'Title':titleFinal,'Category':categoryFinal,'T
 raw_datasets=DatasetDict(d)
 
 url1='https://www.ittefaq.com.bd/'
-cnt=16346
+cnt=18103
+
 
 
 
@@ -76,15 +77,22 @@ while True:
 
 
                     # contents
-                    contents=contents.find_all('span')
-                    if contents:
+                    contentsx=contents.find_all('span')
+                    if contentsx:
                         content=str()
-                        for x in contents:
+                        for x in contentsx:
                             content+=x.text
                         # print(content)
                         contentFinal=content
                         file.write(contentFinal+'\n')
-
+                    else:
+                        contents=contents.find_all('p')
+                        if contents:
+                            content=str()
+                            for x in contents:
+                                content+=x.text
+                            contentFinal=content
+                            file.write(contentFinal+'\n')
 
 
 
