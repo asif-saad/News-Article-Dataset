@@ -13,7 +13,7 @@ d={'EkattorTv':Dataset.from_dict({'Title':titleFinal,'Category':categoryFinal,'T
 raw_datasets=DatasetDict(d)
 
 url1='https://www.ittefaq.com.bd/'
-cnt=28337
+cnt=29803
 
 
 
@@ -124,9 +124,9 @@ while True:
         
     
 
-    if cnt%250==0:
+    if cnt%300==0:
         import time
-        time.sleep(50)
+        time.sleep(70)
 
     cnt+=1
     
