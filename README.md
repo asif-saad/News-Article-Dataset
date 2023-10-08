@@ -65,6 +65,6 @@
 
 - experimenting on time daily, providing no time delays.
 
-- started from 57729 to 58937, 61303 - 75503, 75503 - 76529, 76529 - 86526, 86840 - 
+- started from 57729 to 58937, 61303 - 75503, 75503 - 76529, 76529 - 86526, 86840 - 95982, 
 
 - works better without interruption during low access time, like night time, after 11.00 pm until 10.00 am (around)
