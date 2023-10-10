@@ -68,3 +68,40 @@
 - started from 57729 to 58937, 61303 - 75503, 75503 - 76529, 76529 - 86526, 86840 - 95982, 95982 - 107579, 107579 - 133044, 133044 - 147073, 147073 - 148057, 148057 - 154664, 154664 - 
 
 - works better without interruption during low access time, like night time, after 11.00 pm until 10.00 am (around)
+
+
+
+
+
+
+<h2> Independent Tv News </h2>
+
+can be worked around with simple increment of value in url
+
+
+
+
+<h2> Bonik Barta </h2>
+
+can be worked around with simple increment of value in url
+
+
+
+<h2> Bangla Tribune </h2>
+
+can be worked around with simple increment of value in url
+
+
+<h2> Dhaka Post </h2>
+
+can be worked around with simple increment of value in url
+
+
+<h2> Bd24live </h2>
+
+can be worked around with simple increment of value in url
+
+<h2> Dhaka Tribune Bangla </h2>
+
+can be worked around with simple increment of value in url
+
