@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 from datasets.dataset_dict import DatasetDict
 from datasets import Dataset
 import jsonlines
-import http
 
 titleFinal=str()
 categoryFinal=str()
@@ -14,7 +13,7 @@ d={'EkattorTv':Dataset.from_dict({'Title':titleFinal,'Category':categoryFinal,'T
 raw_datasets=DatasetDict(d)
 
 url1='https://www.ittefaq.com.bd/'
-cnt=224475
+cnt=236750
 
 
 
