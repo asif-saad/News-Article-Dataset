@@ -103,7 +103,7 @@ start from 500061 (04-07-2019)
 around 320k
 
 
-<h2> Dhaka Post </h2\
+<h2> Dhaka Post </h2>
 can be worked around with simple increment of value in url
 
 start from 1 (29-11-2020)
