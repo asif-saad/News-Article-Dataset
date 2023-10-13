@@ -77,7 +77,10 @@
 <h2> Independent Tv News </h2>
 
 can be worked around with simple increment of value in url
+ 
+start from 42190 (02-01-2019)
 
+around 65k
 
 
 
@@ -85,23 +88,34 @@ can be worked around with simple increment of value in url
 
 can be worked around with simple increment of value in url
 
+start from 204940 (01-08-2019)
+
+around 150k
+
 
 
 <h2> Bangla Tribune </h2>
 
 can be worked around with simple increment of value in url
 
+start from 500061 (04-07-2019)
 
-<h2> Dhaka Post </h2>
+around 320k
 
+
+<h2> Dhaka Post </h2\
 can be worked around with simple increment of value in url
 
+start from 1 (29-11-2020)
 
-<h2> Bd24live </h2>
+around 229k
 
-can be worked around with simple increment of value in url
 
 <h2> Dhaka Tribune Bangla </h2>
 
 can be worked around with simple increment of value in url
+
+start from 1 (12-05-2018)
+
+around 71k
 
