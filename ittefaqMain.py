@@ -13,7 +13,7 @@ d={'EkattorTv':Dataset.from_dict({'Title':titleFinal,'Category':categoryFinal,'T
 raw_datasets=DatasetDict(d)
 
 url1='https://www.ittefaq.com.bd/'
-cnt=305676
+cnt=307549
 
 
 
@@ -70,30 +70,52 @@ while True:
                         # print(date.text)
                         if date:
                             timeFinal=date.text
-                            file.write(timeFinal +'\n')
+                            file.write(timeFinal+'\n')
 
 
 
 
 
                     # contents
-                    contentsx=contents.find_all('span')
-                    if contentsx:
-                        content=str()
-                        for x in contentsx:
-                            content+=x.text
-                        # print(content)
-                        contentFinal=content
-                        file.write(contentFinal+'\n')
-                    else:
-                        contents=contents.find_all('p')
-                        if contents:
-                            content=str()
-                            for x in contents:
-                                content+=x.text
-                            contentFinal=content
-                            file.write(contentFinal+'\n')
+                    content=str()
+                    for x in contents:
+                        content+=x.text
+                    contentFinal=content
+                    file.write(contentFinal)
 
+                    # contentsx=contents.find_all('span')
+                    # if contentsx:
+                    #     content=str()
+                    #     for x in contentsx:
+                    #         content+=x.text
+                    #     # print(content)
+                    #     contentFinal+=content
+                    #     # file.write(contentFinal)
+
+
+                    # if contents.find('div',class_='viewport jw_article_body'):
+                    #     contentsx=contents.find('div',class_='viewport jw_article_body')
+                    #     if contentsx:
+                    #         p_tag=contentsx.find_all('p')
+                    #         if p_tag:
+                    #             content=str()
+                    #             for x in p_tag:
+                    #                 content+=x.text
+                                
+                    #             contentFinal+=content
+                    #             # file.write(contentFinal)
+                    
+
+                    # else:
+                    #     contents=contents.find_all('p')
+                    #     if contents:
+                    #         content=str()
+                    #         for x in contents:
+                    #             content+=x.text
+                    #         contentFinal+=content
+                    #         # file.write(contentFinal)
+                    
+                    
 
 
 
@@ -102,14 +124,14 @@ while True:
                         tags=tags.find_all('strong')
                         if tags:
                             tag=str()
+                        
                             for x in tags:
                                 tag+=x.text
-                                if x!=tag[-1]:
+                                if x.text!=tags[-1].text:
                                     tag+=', '
-                            
-                            # print(tag)
+
                             tagsFinal=tag
-                            file.write('tags:'+tagsFinal)
+                            file.write('\ntags:'+tagsFinal)
 
 
                     file.write('\n\n\n')

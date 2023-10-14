@@ -69,6 +69,10 @@
 
 - works better without interruption during low access time, like night time, after 11.00 pm until 10.00 am (around)
 
+- content section contains some '\n' and need to clear them later.
+
+- 
+
 
 
 
