@@ -13,7 +13,7 @@ d={'EkattorTv':Dataset.from_dict({'Title':titleFinal,'Category':categoryFinal,'T
 raw_datasets=DatasetDict(d)
 
 url1='https://www.ittefaq.com.bd/'
-cnt=307549
+cnt=319025
 
 
 
@@ -70,7 +70,7 @@ while True:
                         # print(date.text)
                         if date:
                             timeFinal=date.text
-                            file.write(timeFinal+'\n')
+                            file.write(timeFinal)
 
 
 
