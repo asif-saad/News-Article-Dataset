@@ -9,7 +9,7 @@ categoryFinal=str()
 timeFinal=str()
 contentFinal=str()
 tagsFinal=str()
-d={'EkattorTv':Dataset.from_dict({'Title':titleFinal,'Category':categoryFinal,'Time':timeFinal,'Content':contentFinal,'Tags':tagsFinal})}
+d={'IttefaqNews':Dataset.from_dict({'Title':titleFinal,'Category':categoryFinal,'Time':timeFinal,'Content':contentFinal,'Tags':tagsFinal})}
 raw_datasets=DatasetDict(d)
 
 url1='https://www.ittefaq.com.bd/'
