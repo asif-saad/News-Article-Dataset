@@ -19,26 +19,25 @@ with open("last_val.txt","r") as file:
 
 
 
+with open("last_val.txt","w") as file:
+    with open('output.txt','a',encoding='utf-8') as file:
+        with jsonlines.open("C:/Users/asifs/OneDrive/Desktop/dataset/ittefaq.jsonl", "a") as writer:
+            while True:
+                file.write(str(cnt))
+                url=url1+str(cnt)+"/"
+                print(cnt)
+                response = requests.get(url)
+                if response.status_code == 200:
+                    soup = BeautifulSoup(response.text, 'html.parser')
+                    h1=soup.find('h1',class_='title mb10')
+                    contents=soup.find('div',class_='viewport jw_article_body')
+                    category=soup.find('h2',class_='secondary_logo')
+                    date=soup.find('div',class_='each_row time')
+                    tags=soup.find('div',class_='topic_list')
 
-while True:
-    with open("last_val.txt","w") as file:
-        file.write(str(cnt))
-        url=url1+str(cnt)+"/"
-        print(cnt)
-        response = requests.get(url)
-        if response.status_code == 200:
-            soup = BeautifulSoup(response.text, 'html.parser')
-            h1=soup.find('h1',class_='title mb10')
-            contents=soup.find('div',class_='viewport jw_article_body')
-            category=soup.find('h2',class_='secondary_logo')
-            date=soup.find('div',class_='each_row time')
-            tags=soup.find('div',class_='topic_list')
 
 
-
-            if h1 and contents:
-                with open('output.txt','a',encoding='utf-8') as file:
-                    with jsonlines.open("C:/Users/asifs/OneDrive/Desktop/dataset/ittefaq.jsonl", "a") as writer:
+                    if h1 and contents:
                         titleFinal=str()
                         categoryFinal=str()
                         timeFinal=str()
@@ -141,17 +140,17 @@ while True:
                         writer.write({'Title':titleFinal,'Category':categoryFinal,'Time':timeFinal,
                                     'Content':contentFinal,'Tags':tagsFinal})
 
-                                
+                                        
 
 
-        else:
-            print('Failed to retrieve the web page. Status code:', response.status_code)
-            
-        
+                else:
+                    print('Failed to retrieve the web page. Status code:', response.status_code)
+                    
+                
 
-        # if cnt%300==0:
-        #     import time
-        #     time.sleep(70)
+                # if cnt%300==0:
+                #     import time
+                #     time.sleep(70)
 
-        cnt+=1
+                cnt+=1
 
