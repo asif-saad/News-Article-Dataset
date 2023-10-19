@@ -123,3 +123,21 @@ start from 1 (12-05-2018)
 
 around 71k
 
+
+
+<h2>Channel 24 </h2>
+
+it has title name in its url, embedded in an intangiable way.
+
+
+<h2> Daily Star Bangla </h2>
+
+can't just retrieve with iteration, requires manual iteration.
+
+use div element with class='pb-20 clearfix' only available in contents of that specific news
+
+got to work on it more.
+
+
+
+
