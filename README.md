@@ -141,3 +141,45 @@ got to work on it more.
 
 
 
+<h2> Manab Jamin </h2>
+
+start from the 1 index, iterative process.
+around 80k+ available
+
+
+<h2> Samakal </h2>
+
+possible with iteration, expecting at least 200k+, need to find the initial news, better start from latest news and decresingly iteration.
+
+
+<h2>Janakantha</h2>
+
+starting iteratively from 100001, expecting 600k+
+
+
+<h2> bhorerkagoj </h2>
+
+iteration does not work, url has date section, under every date section available multiple news link. itermediate level difficulty.
+
+
+<h2> dailyinqilab </h2>
+
+iteratively increasing possible, pessimist about news quantity. need to find initial news url.
+
+<h2> dailyvorerpata </h2>
+
+find intial news lnk, iterative increasing available. pessimistic about category of news.
+
+<h2> Bangladesh Bulletin </h2>
+
+increasing iteration, pessmisitc about catergory.
+
+
+<h2> dainikbangla </h2>
+
+iterative increasing
+
+
+<h2> ajkerpatrika </h2>
+
+iterative increasing
