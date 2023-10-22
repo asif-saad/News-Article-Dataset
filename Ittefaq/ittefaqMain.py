@@ -22,11 +22,11 @@ with open("last_val.txt","r") as file:
 
 while True:
     with open("last_val.txt","w") as file:
-        file.write(str(cnt))
         url=url1+str(cnt)+"/"
         print(cnt)
         response = requests.get(url)
         if response.status_code == 200:
+            file.write(str(cnt))
             soup = BeautifulSoup(response.text, 'html.parser')
             h1=soup.find('h1',class_='title mb10')
             contents=soup.find('div',class_='viewport jw_article_body')
