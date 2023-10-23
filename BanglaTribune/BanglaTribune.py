@@ -5,13 +5,15 @@ import requests
 from bs4 import BeautifulSoup
 
 
-cnt=500282
-url1='https://www.banglatribune.com/'
+cnt=509115
+with open('C:/Users/asifs/OneDrive/Desktop/News-Article-Dataset/BanglaTribune/last_val.txt','r') as file:
+    cnt=int(file.read())
 
-with open('C:/Users/asifs/OneDrive/Desktop/News-Article-Dataset/Ittefaq/output.txt', 'a', encoding='utf-8') as file:
+
+url1='https://www.banglatribune.com/'
+with open('C:/Users/asifs/OneDrive/Desktop/News-Article-Dataset/BanglaTribune/output.txt', 'a', encoding='utf-8') as file:
     while True:
         url=url1+str(cnt)+'/'
-
 
         response = requests.get(url)
         if response.status_code == 200:
@@ -30,4 +32,6 @@ with open('C:/Users/asifs/OneDrive/Desktop/News-Article-Dataset/Ittefaq/output.t
 
         cnt+=1
         print(cnt)
+        with open('C:/Users/asifs/OneDrive/Desktop/News-Article-Dataset/BanglaTribune/last_val.txt', 'w', encoding='utf-8') as file1:
+            file1.write(str(cnt))
     
