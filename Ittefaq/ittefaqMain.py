@@ -1,6 +1,3 @@
-# 663989
-
-
 import requests
 from bs4 import BeautifulSoup
 from datasets.dataset_dict import DatasetDict
@@ -37,8 +34,6 @@ while True:
             date=soup.find('div',class_='each_row time')
             tags=soup.find('div',class_='topic_list')
 
-
-
             if h1 and contents:
                 with open('output.txt','a',encoding='utf-8') as file:
                     with jsonlines.open("C:/Users/asifs/OneDrive/Desktop/dataset/ittefaq.jsonl", "a") as writer:
@@ -48,17 +43,10 @@ while True:
                         contentFinal=str()
                         tagsFinal=str()
 
-
-
-
-
                         # titles
                         h1=h1.text
                         titleFinal=h1
                         file.write(str(cnt-15817)+','+str(cnt)+'\n'+titleFinal+'\n')
-
-
-
 
                         # category
                         if category:
@@ -68,8 +56,6 @@ while True:
                                 categoryFinal=category.text
                                 file.write(categoryFinal+'\n')
 
-
-
                         # time
                         if date:
                             date=date.find('span',class_='tts_time')
@@ -78,10 +64,6 @@ while True:
                                 timeFinal=date.text
                                 file.write(timeFinal)
 
-
-
-
-
                         # contents
                         content=str()
                         for x in contents:
@@ -89,53 +71,15 @@ while True:
                         contentFinal=content
                         file.write(contentFinal)
 
-                        # contentsx=contents.find_all('span')
-                        # if contentsx:
-                        #     content=str()
-                        #     for x in contentsx:
-                        #         content+=x.text
-                        #     # print(content)
-                        #     contentFinal+=content
-                        #     # file.write(contentFinal)
-
-
-                        # if contents.find('div',class_='viewport jw_article_body'):
-                        #     contentsx=contents.find('div',class_='viewport jw_article_body')
-                        #     if contentsx:
-                        #         p_tag=contentsx.find_all('p')
-                        #         if p_tag:
-                        #             content=str()
-                        #             for x in p_tag:
-                        #                 content+=x.text
-                                    
-                        #             contentFinal+=content
-                        #             # file.write(contentFinal)
-                        
-
-                        # else:
-                        #     contents=contents.find_all('p')
-                        #     if contents:
-                        #         content=str()
-                        #         for x in contents:
-                        #             content+=x.text
-                        #         contentFinal+=content
-                        #         # file.write(contentFinal)
-                        
-                        
-
-
-
                         # tags
                         if tags:
                             tags=tags.find_all('strong')
                             if tags:
                                 tag=str()
-                            
                                 for x in tags:
                                     tag+=x.text
                                     if x.text!=tags[-1].text:
                                         tag+=', '
-
                                 tagsFinal=tag
                                 file.write('\ntags:'+tagsFinal)
 
@@ -144,17 +88,8 @@ while True:
                         writer.write({'Title':titleFinal,'Category':categoryFinal,'Time':timeFinal,
                                     'Content':contentFinal,'Tags':tagsFinal})
 
-                                
-
-
+                            
         else:
             print('Failed to retrieve the web page. Status code:', response.status_code)
-            
-        
-
-        # if cnt%300==0:
-        #     import time
-        #     time.sleep(70)
-
         cnt+=1
 
