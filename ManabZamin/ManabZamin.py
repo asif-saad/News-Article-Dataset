@@ -24,7 +24,7 @@ while True:
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, 'html.parser')
         title=soup.find('h1',class_='lh-base fs-1')
-        time=soup.find('div',class_='col-sm-8').find('h5').next_sibling.strip()
+        time=soup.find('div',class_='col-sm-8')
         content=soup.find('div',class_='col-sm-10 offset-sm-1 fs-5 lh-base mt-4 mb-5')
         category=soup.find('h4',class_='sectitle')
         if title and content:
@@ -38,7 +38,13 @@ while True:
                     contentFinal=content.text.replace('\n','')
                     file2.write(contentFinal+'\n')
                     # time date
-                    timeFinal=time
+                    if time:
+                        timeP=time.find('p')
+                        if timeP:
+                            timeFinal=timeP.text
+                        else:
+                            timeFinal=time.find('h5').text
+                        
                     file2.write(timeFinal+'\n')
                     # category
                     categoryFinal=category.text
