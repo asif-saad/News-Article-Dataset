@@ -170,6 +170,12 @@ Attributes are:
 
 starting iteratively from 100001, expecting 600k+
 
+Attributes are:
+- Title: News headline
+- Category: Classification of the news
+- Time: ``` প্রকাশিত: ০৬:২৩, ২৬ অক্টোবর ২০১৪ ```
+- Content: Main body of news
+
 
 <h2> bhorerkagoj </h2>
 
@@ -191,9 +197,9 @@ increasing iteration, pessmisitc about catergory.
 
 <h2> dainikbangla </h2>
 
-iterative increasing
+iterative increasing, around 40k
 
 
 <h2> ajkerpatrika </h2>
 
-iterative increasing
+iterative increasing, aroud 230k
