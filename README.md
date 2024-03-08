@@ -175,7 +175,18 @@ Attributes are:
 - Category: Classification of the news
 - Time: ``` প্রকাশিত: ০৬:২৩, ২৬ অক্টোবর ২০১৪ ```
 - Content: Main body of news
+- Keyword: Related tags to news
+- Meta: Some quotation, or important gist from the news.
 
+
+
+<h2> ajkerpatrika </h2>
+
+Attributes are:
+- Title: News headline
+- Category: Classification of the news
+- Time: ```প্রকাশ : ২২ মার্চ ২০২১, ২১:৪৮ ```
+- Content: Main body of news
 
 <h2> bhorerkagoj </h2>
 
@@ -198,8 +209,3 @@ increasing iteration, pessmisitc about catergory.
 <h2> dainikbangla </h2>
 
 iterative increasing, around 40k
-
-
-<h2> ajkerpatrika </h2>
-
-iterative increasing, aroud 230k
